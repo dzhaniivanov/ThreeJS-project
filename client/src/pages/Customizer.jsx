@@ -66,6 +66,13 @@ const Customizer = () => {
         state.isFullTexture = false;
         break;
     }
+
+    setActiveFilterTab((prev) => {
+      return {
+        ...prev,
+        [tabName]: !prev[tabName],
+      };
+    });
   };
 
   const readFile = (type) => {
@@ -118,8 +125,8 @@ const Customizer = () => {
                 key={tab.name}
                 tab={tab}
                 isFilterTab
-                isActiveTavb=""
-                handleClick={() => {}}
+                isActiveTavb={activeFilterTab[tab.name]}
+                handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
           </motion.div>
